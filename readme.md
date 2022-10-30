@@ -4,6 +4,8 @@ A single-binary GeoIP Lookup API powered by MaxMind. Can be run as a standalone 
 
 NB: This binary does not handling fetching or updating MaxMind databases. The standard [geoipupdate](https://github.com/maxmind/geoipupdate) and cron does a far better job then we can.
 
+```docker pull ghcr.io/dachande663/geoip-lookup:main```
+
 
 ## API Reference
 
@@ -22,6 +24,32 @@ Return information about an IPv4 or IPv6 address, or an error if not found.
 ```
 
 Return information about the current system status including database date and queries made.
+
+
+## Installation
+
+GeoIP-Lookup is published on Github Packages.
+
+```docker pull ghcr.io/dachande663/geoip-lookup:main```
+
+An example using docker-compose:
+
+````
+version: "3"
+
+services:
+
+  geoip:
+    image: ghcr.io/dachande663/geoip-lookup:main
+    ports:
+      - 5225:5225
+    volumes:
+      - ./.env:/.env:rw
+      - ./GeoLite2-City.mmdb:/GeoLite2-City.mmdb:rw
+````
+
+Alternatively, download and build the Go app for your arch.
+
 
 ## Environment Variables
 

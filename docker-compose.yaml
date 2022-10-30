@@ -1,0 +1,11 @@
+version: "3.5"
+
+services:
+
+  geoip:
+    image: ghcr.io/dachande663/geoip-lookup:main
+    ports:
+      - 5225:5225
+    volumes:
+      - ./.env:/.env:rw
+      - ./GeoLite2-City.mmdb:/GeoLite2-City.mmdb:rw
